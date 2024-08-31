@@ -90,7 +90,7 @@ pageviews:
 theme_mode: # [light | dark]
 
 # 启用动画背景特效
-backgroud_animation: true
+backgroud_animation: false
 
 # 启用鼠标点击特效
 mouse_click_effect: yes
