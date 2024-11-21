@@ -42,7 +42,7 @@
 
            
 
-        /////////////////////////////
+         /////////////////////////////
         //////////////    获取编号
 
         let subjectID = null;  // 声明全局变量
@@ -174,7 +174,8 @@
                 </div>
                 `,
             /////////////////决定几秒可以按
-            choices: [' &nbsp;&nbsp;<span id="timer">6</span>&nbsp;&nbsp;&nbsp;秒&nbsp;&nbsp;&nbsp; '],
+            choices: [' &nbsp;&nbsp;&nbsp;<span id="timer">6</span>&nbsp;&nbsp;秒&nbsp;&nbsp;&nbsp; '],      //////这里改过
+            
             button_html: btn_html_timer,
             //全部结束后，鼠标消失
             on_finish: function () {
@@ -281,7 +282,7 @@
             let practice_timeline = [];
             let shuffled_variables = jsPsych.randomization.shuffle(timeline_variables); // 随机化试次
             //循环次数
-            for (let i = 0; i < 1; i++) { ///////////这里修改
+            for (let i = 0; i < 3; i++) {
             shuffled_variables.forEach(function(variable) {
             practice_timeline.push(fixation);//
             practice_timeline.push(practice_trial(variable.word, variable.color, variable.congruency, variable.block));
@@ -321,7 +322,7 @@
                 let total_trials = practice_block_data.count();
                 let accuracy = correct_trials / total_trials;
 
-                return accuracy >= 0.1 ? [" "] : "ALL_KEYS";  //////////////////////这里修改
+                return accuracy >= 0.9 ? [" "] : "ALL_KEYS";
             },
             on_finish: function(data) {
                 let practice_block_data = jsPsych.data.get().filter({ block: practice_block });
@@ -329,7 +330,7 @@
                 let total_trials = practice_block_data.count();
                 let accuracy = correct_trials / total_trials;
 
-                if (accuracy < 0.1) {        //////////////////////这里修改
+                if (accuracy < 0.9) {
                     practice_block++;
                     jsPsych.addNodeToEndOfTimeline(pre_instruction);
                     let new_practice_timeline = createPracticeTimeline(practice_block);
@@ -450,6 +451,79 @@
         {"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
         {"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
         {"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 红","color":"green","correct":"d","id":2,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 红","color":"green","correct":"d","id":2,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 红","color":"green","correct":"d","id":2,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 红","color":"green","correct":"d","id":2,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+        {"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block1","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+        {"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block1","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+        {"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+        {"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block1","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"}
 
             ]
 
@@ -503,7 +577,62 @@
 {"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
 {"stim":"这个 红","color":"green","correct":"d","id":2,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
 {"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
-
+{"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 蓝","color":"blue","correct":"l","id":114,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 红","color":"green","correct":"d","id":2,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 蓝","color":"yellow","correct":"j","id":103,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 绿","color":"red","correct":"a","id":1,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"我的 黄","color":"yellow","correct":"j","id":113,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 绿","color":"green","correct":"d","id":112,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 绿","color":"green","correct":"d","id":12,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"我的 绿","color":"red","correct":"a","id":101,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"这个 蓝","color":"yellow","correct":"j","id":3,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"我的 黄","color":"blue","correct":"l","id":104,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"我的 红","color":"green","correct":"d","id":102,"block":"block2","先前一致性":"不一致","当前一致性":"不一致","先前参照":"我的","当前参照":"我的"},
+{"stim":"这个 黄","color":"yellow","correct":"j","id":13,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"我的 红","color":"red","correct":"a","id":111,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"我的"},
+{"stim":"这个 黄","color":"blue","correct":"l","id":4,"block":"block2","先前一致性":"一致","当前一致性":"不一致","先前参照":"我的","当前参照":"这个"},
+{"stim":"这个 红","color":"red","correct":"a","id":11,"block":"block2","先前一致性":"不一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"},
+{"stim":"这个 蓝","color":"blue","correct":"l","id":14,"block":"block2","先前一致性":"一致","当前一致性":"一致","先前参照":"这个","当前参照":"这个"}
 
 
 
@@ -1143,7 +1272,8 @@ var set_style_rest = {
             stimulus: `
             <div>
                 <p>您已完成本实验！</p>
-                <p>按空格键将实验数据下载</p>
+                <p>请联系实验主试</p>
+                <p>并按空格键将实验数据上传</p>
             </div>
             `,
             choice:[" "]
@@ -1158,11 +1288,11 @@ var set_style_rest = {
         //添加休息和滑动
         formal_timeline.push(rest_procedure);
         //添加block3进入子时间线
-        //formal_timeline.push(block4_procedure);//////与block4交换，实现ABBA平衡
+        formal_timeline.push(block4_procedure);//////与block4交换，实现ABBA平衡
         //添加休息和滑动
-        //formal_timeline.push(remind3);///修改过
+        formal_timeline.push(remind3);///修改过
         //添加block4进入子时间线
-        //formal_timeline.push(block3_procedure);//////与block3交换，实现ABBA平衡
+        formal_timeline.push(block3_procedure);//////与block3交换，实现ABBA平衡
          //添加提示语4
         //formal_timeline.push(remind4);
         //添加block5进入子时间线
@@ -1175,6 +1305,8 @@ var set_style_rest = {
 		formal_timeline.push(end_remark);
         //增加退出全屏
         formal_timeline.push(quit_fullscreen);
+
+
         jsPsych.run(timeline);
     </script>
 </body>
